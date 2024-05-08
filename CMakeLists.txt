@@ -1,14 +1,19 @@
 cmake_minimum_required(VERSION 3.14)
-project(Signal_processor)
+project(Signals)
 
-# For pybind11
-add_subdirectory(extern/pybind11)
+set (SOURCES
+    source/signal.cpp
+    source/plot.cpp
+    source/noise.cpp
+)
 
-# For matplot++
-add_subdirectory(extern/matplotplusplus)
+# Dependencies
+add_subdirectory(extern/pybind11)   # For pybind11
+add_subdirectory(extern/matplotplusplus)    # For matplot++
+include_directories(${CMAKE_SOURCE_DIR}/headers)    # For headers
 
 # Add the signal processor module
-pybind11_add_module(Signal_processor source/signal_processor.cpp)
+pybind11_add_module(signal ${SOURCES})
 
 # Link against Matplot++
-target_link_libraries(Signal_processor PRIVATE Matplot++::matplot)
+target_link_libraries(signal PRIVATE Matplot++::matplot)
