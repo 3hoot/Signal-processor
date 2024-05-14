@@ -9,7 +9,7 @@ std::vector<double> signal::getNoise(double amplitude, int size)
     std::vector<double> noise;
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::normal_distribution<double> dist(0, amplitude);
+    std::normal_distribution<double> dist(-amplitude, amplitude);
 
     for (int i = 0; i < size; i++)
     {

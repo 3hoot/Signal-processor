@@ -5,12 +5,11 @@
 #include "noise.h"
 #include "plot.h"
 
-namespace py = pybind11;
-
 PYBIND11_MODULE(signal, handle)
 {
     handle.doc() = "pybind11 signal processing module"; // optional module docstring
 
+    // functions
     handle.def("show", &signal::show);
     handle.def("noise", &signal::getNoise);
 }
