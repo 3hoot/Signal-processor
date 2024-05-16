@@ -33,8 +33,8 @@ namespace signal
         void addNoise(const double amplitude);
 
     protected:
-        std::vector<double> m_t{};
-        std::vector<double> m_y{};
+        std::vector<double> m_t{}; // time axis (x)
+        std::vector<double> m_y{}; // value axis (y)
     };
 }
 
