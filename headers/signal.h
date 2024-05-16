@@ -16,7 +16,7 @@ namespace signal
         ~Basic() = default;
 
         // getters
-        const std::vector<double> &getX() const { return m_x; };
+        const std::vector<double> &getT() const { return m_t; };
         const std::vector<double> &getY() const { return m_y; };
 
         // presentation method
@@ -26,7 +26,7 @@ namespace signal
         void addNoise(const double amplitude);
 
     protected:
-        std::vector<double> m_x{};
+        std::vector<double> m_t{};
         std::vector<double> m_y{};
     };
 }
