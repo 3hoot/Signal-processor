@@ -12,6 +12,7 @@
 #include "signal.h"
 #include "generic.h"
 #include "dft.h"
+#include "threshold.h"
 
 namespace mp = matplot;
 namespace py = pybind11;
@@ -47,6 +48,7 @@ PYBIND11_MODULE(signal_processing, handle)
         .def("__sub__", [](const signal::DFTSignal &self, const signal::DFTSignal &other)
              { return self - other; });
 
+    handle.def("threshold", &signal::threshold);
     handle.def("sin", &signal::sin);
     handle.def("cos", &signal::cos);
     handle.def("square", &signal::square);
