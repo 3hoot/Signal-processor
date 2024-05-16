@@ -133,7 +133,7 @@ std::vector<std::complex<double>> signal::inner::DFT(const std::vector<std::comp
 
             sum += x[n] * t;
         }
-        X.push_back(sum);
+        X[k] = sum;
     }
 
     return X;
@@ -160,7 +160,7 @@ std::vector<std::complex<double>> signal::inner::revDFT(const std::vector<std::c
         }
         sum /= static_cast<double>(N);
 
-        a.push_back(sum);
+        a[k] = sum;
     }
 
     return a;
