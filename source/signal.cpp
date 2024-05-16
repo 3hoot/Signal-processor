@@ -4,6 +4,7 @@
 
 #include "noise.h"
 #include "plot.h"
+#include "dft.h"
 
 PYBIND11_MODULE(signal, handle)
 {
