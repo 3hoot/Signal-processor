@@ -5,13 +5,13 @@
 
 #include "dft.h"
 //DFT function
-std::vector<double> signal::DFT(std::vector<std::complex<double>> x)
+std::vector<std::complex<double>> signal::DFT(std::vector<std::complex<double>> x)
 {
     int N = x.size();
 
     std::complex<double> sum;
 
-    std::vector<double> X(N);
+    std::vector<std::complex<double>> X(N);
 
     for(int k = 0; k < N; k++)
     {
@@ -24,20 +24,19 @@ std::vector<double> signal::DFT(std::vector<std::complex<double>> x)
             
             sum += x[n] * t; 
         }
-        double value = pow(std::real(sum), 2) + pow(std::imag(sum), 2);
-        X.push_back(value);
+        X.push_back(sum);
     }
 
     return X;
 }
 //Reverse DFT function
-std::vector<double> signal::revDFT(std::vector<std::complex<double>> A)
+std::vector<std::complex<double>> signal::revDFT(std::vector<std::complex<double>> A)
 {
    int N = A.size();
 
     std::complex<double> sum;
 
-    std::vector<double> a(N);
+    std::vector<std::complex<double>> a(N);
 
     for(int k = 0; k < N; k++)
     {
@@ -51,26 +50,36 @@ std::vector<double> signal::revDFT(std::vector<std::complex<double>> A)
             sum += A[n] * t; 
         }
         sum /= N;
-        double value = pow(std::real(sum), 2) + pow(std::imag(sum), 2);
-        a.push_back(value);
+        
+        a.push_back(sum);
     }
 
     return a;
 }
+//returns modulus of a complex number raised to the power of 2
+std::vector<double> signal::norm(std::vector<std::complex<double>> comnumber)
+{
+    int N = comnumber.size();
 
-// std::vector<double> signal::getSignal(std::vector<double> &signal)
-// {
-//     int a = signal.size();
+    std::vector<double> magnitude(N);
 
-//     std::vector<std::complex<double>> test;
+    for(int i = 0; i < N; i++)
+    {
+        magnitude[i] = std::norm(comnumber[i]);
+    }
 
-//     for(int i = 0; i < a; i++)
-//     {
-//         test[i] = (&signal, 0.0);
-//     }
+    return magnitude;
+}
+//double to complex with imaginary = 0
+std::vector<std::complex<double>> signal::rtoc(std::vector<double> rel)
+{
+    int N = rel.size();
+    std::vector<std::complex<double>> com(N);
 
-//     std::vector<double> test1 = DFT(test);
+    for(int i = 0; i < N; i++)
+    {
+        com[i] = (rel[i], 0.0);
+    }
 
-
-//     return test1;
-// }
+    return com;
+}
