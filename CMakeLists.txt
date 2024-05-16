@@ -6,6 +6,7 @@ set (PYTHON_MODULE_NAME signal_processing)
 set (SOURCES
     source/signal.cpp
     source/generic.cpp
+    source/dft.cpp
 )
 
 # Dependencies

@@ -8,16 +8,23 @@
 
 namespace signal
 {
-    class Basic
+    class Signal
     {
     public:
-        Basic(const double start, const double end, const int samples, std::function<double(double)> = [](auto x)
-                                                                       { return x; });
-        ~Basic() = default;
+        Signal(const double start, const double end, const int samples, std::function<double(double)> = [](auto x)
+                                                                        { return x; });
+        Signal(const std::vector<double> &t, const std::vector<double> &y)
+            : m_t{t}, m_y{y} {};
+        Signal() = default;
+        ~Signal() = default;
 
         // getters
         const std::vector<double> &getT() const { return m_t; };
         const std::vector<double> &getY() const { return m_y; };
+
+        // basic operations
+        Signal operator+(const Signal rho) const;
+        Signal operator-(const Signal rho) const;
 
         // presentation method
         void show(const std::string_view format_specifiaction = "") const;
