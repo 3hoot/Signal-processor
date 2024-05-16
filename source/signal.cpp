@@ -11,6 +11,7 @@
 
 #include "signal.h"
 #include "generic.h"
+#include "dft.h"
 
 namespace mp = matplot;
 namespace py = pybind11;
