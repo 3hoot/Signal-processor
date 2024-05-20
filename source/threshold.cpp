@@ -4,7 +4,7 @@
 #include "signal.h"
 #include "threshold.h"
 
-signal::Signal threshold(const signal::Signal &base, const double threshold)
+signal::Signal signal::threshold(const signal::Signal &base, double threshold)
 {
     std::vector<double> y{};
     for (const auto &element : base.getY())
@@ -12,5 +12,5 @@ signal::Signal threshold(const signal::Signal &base, const double threshold)
         y.push_back(element >= threshold ? 1 : 0);
     }
 
-    return {y, base.getT()};
+    return {base.getT(), y};
 }

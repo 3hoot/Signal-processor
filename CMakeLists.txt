@@ -7,6 +7,7 @@ set (SOURCES
     source/signal.cpp
     source/generic.cpp
     source/dft.cpp
+    source/threshold.cpp
 )
 
 # Dependencies
