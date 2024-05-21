@@ -48,6 +48,7 @@ PYBIND11_MODULE(signal_processing, handle)
         .def("__sub__", [](const signal::DFTSignal &self, const signal::DFTSignal &other)
              { return self - other; });
 
+    handle.def("reverseDFT", &signal::reverseDFT);
     handle.def("threshold", &signal::threshold);
     handle.def("sin", &signal::sin);
     handle.def("cos", &signal::cos);
